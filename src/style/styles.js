@@ -17,11 +17,11 @@ export const basicStyle = StyleSheet.create({
     alignItems: "center"
   },
   row: {
+    justifyContent: "center",
     flexDirection: "row",
-    marginVertical: 6
+    flexWrap: "nowrap"
   },
   col: {
-    flexGrow: 1,
     flexDirection: "column"
   },
   inputText: {

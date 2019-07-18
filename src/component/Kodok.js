@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 
 export class Kodok extends Component {
   state = {
@@ -23,7 +23,7 @@ export class Kodok extends Component {
   }
 
   render() {
-    return this.state.muncul ? (
+    return this.props.muncul === this.props.i ? (
       <Image
         style={{ width: 30, height: 30 }}
         source={{
@@ -34,7 +34,7 @@ export class Kodok extends Component {
       <Image
         style={{ width: 30, height: 30 }}
         source={{
-          uri: this.state.urlKodok
+          uri: this.state.urlMonyet
         }}
       />
     );
