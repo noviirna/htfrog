@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+  Button
+} from "react-native";
 import { basicStyle } from "../style/styles";
 import { p001, color, fontsSize } from "../style/base";
 import { SwitchActions } from "react-navigation";

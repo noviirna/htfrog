@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView, Text } from "react-native";
 import Kodok from "../component/Kodok";
 import { basicStyle } from "../style/styles";
 import { SwitchActions } from "react-navigation";
@@ -17,38 +17,82 @@ export class Game extends Component {
     score: 0
   };
 
+  componentDidMount() {
+    this.setState({ muncul: Math.floor(Math.random() * 9) + 1 });
+  }
+
   async componentDidUpdate() {
-    if (this.state.muncul !== 0) {
+    await setTimeout(() => {
       if (this.state.penalty < 3 && this.state.score < 3) {
         if (this.state.pressed === 0) {
-        } else {
-        }
-      } else {
-        if (this.state.penalty === 3) {
-          this.props.navigation.dispatch(
-            SwitchActions.jumpTo(
-              { routeName: "End" },
-              { message: "You lose, sorry!" }
-            )
+          this.setState(
+            {
+              penalty: this.state.penalty + 1
+            },
+            () => {
+              this.setState({ muncul: Math.floor(Math.random() * 9) + 1 });
+            }
           );
-        } else if (this.state.score === 3) {
-          this.props.navigation.dispatch(
-            SwitchActions.jumpTo(
-              { routeName: "End" },
-              { message: "You win, congratulation!" }
-            )
+        } else {
+          this.setState(
+            {
+              score: this.state.score + 1
+            },
+            () => {
+              this.setState({ muncul: Math.floor(Math.random() * 9) + 1 });
+            }
           );
         }
       }
-    } else {
-      await setTimeout(() => {
-        this.setState({ muncul: Math.floor(Math.random() * 9) + 1 });
-      }, 2000);
-    }
+    }, 2000);
   }
 
+  // async componentDidUpdate() {
+  //   if (this.state.penalty < 3 && this.state.score < 3) {
+  //     if (this.state.pressed === 0) {
+  //       await this.setState(
+  //         {
+  //           penalty: this.state.penalty + 1
+  //         },
+  //         async () => {
+  //           await setTimeout(() => {
+  //             this.setState({ muncul: Math.floor(Math.random() * 9) + 1 });
+  //           }, 2000);
+  //         }
+  //       );
+  //     } else if (this.state.pressed === 1) {
+  //       await this.setState(
+  //         {
+  //           penalty: this.state.penalty + 1
+  //         },
+  //         async () => {
+  //           await setTimeout(() => {
+  //             this.setState({ muncul: Math.floor(Math.random() * 9) + 1 });
+  //           }, 2000);
+  //         }
+  //       );
+  //     }
+  //   } else if (this.state.penalty === 3 || this.state.score === 3) {
+  //     await this.onGameEnd();
+  //   }
+  // }
+
   onGameEnd() {
-    this.props.navigation.dispatch(SwitchActions.jumpTo({ routeName: "End" }));
+    if (this.state.penalty === 3) {
+      this.props.navigation.dispatch(
+        SwitchActions.jumpTo(
+          { routeName: "End" },
+          { message: "You lose, sorry!" }
+        )
+      );
+    } else if (this.state.score === 3) {
+      this.props.navigation.dispatch(
+        SwitchActions.jumpTo(
+          { routeName: "End" },
+          { message: "You win, congratulation!" }
+        )
+      );
+    }
   }
 
   render() {
@@ -65,6 +109,8 @@ export class Game extends Component {
             ...basicStyle.center
           }}
         >
+          <Text>Score : {this.state.score}</Text>
+          <Text>penalty : {this.state.penalty}</Text>
           <View
             style={{
               ...basicStyle.col,
