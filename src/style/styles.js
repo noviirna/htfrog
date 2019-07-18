@@ -1,9 +1,9 @@
 import { StyleSheet, Platform } from "react-native";
 import { p001 } from "./base";
 
-export const basicStyle = StyleSheet.create({,
-  safeAreaViewCustom : {
-
+export const basicStyle = StyleSheet.create({
+  safeAreaViewCustom: {
+    flexGrow: 1
   },
   containerFluid: {
     flexGrow: 1
