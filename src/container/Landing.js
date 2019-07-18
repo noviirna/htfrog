@@ -23,19 +23,18 @@ export class Landing extends Component {
       >
         <View>
           <Text>Eager Hit That Frog</Text>
-          <TouchableOpacity
+
+          <Button
+            style={styles.button}
+            title="Play Game"
+            color={color.purple}
             onPress={() => {
               console.log("kepencet");
-              this.props.navigation.dispatch(SwitchActions.jumpTo("Game"));
-
+              this.props.navigation.dispatch(
+                SwitchActions.jumpTo({ routeName: "Game" })
+              );
             }}
-          >
-            <Button
-              style={styles.button}
-              title="Play Game"
-              color={color.purple}
-            />
-          </TouchableOpacity>
+          />
         </View>
       </SafeAreaView>
     );

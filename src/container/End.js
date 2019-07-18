@@ -18,7 +18,9 @@ export class End extends Component {
           <Text>End of Game</Text>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.dispatch(SwitchActions.jumpTo("Landing"));
+              this.props.navigation.dispatch(
+                SwitchActions.jumpTo({ routeName: "Landing" })
+              );
             }}
           >
             <Button

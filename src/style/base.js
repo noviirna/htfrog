@@ -1,6 +1,6 @@
 import { Provider, Dimensions } from "react-native";
 
-const Resolution = {
+export const Resolution = {
   fullHeight: Dimensions.get("window").height,
   fullWidth: Dimensions.get("window").width
 };
