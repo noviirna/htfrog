@@ -1,7 +1,16 @@
 import React, { Component } from "react";
-import { Text, View, SafeAreaView, Button } from "react-native";
+import {
+  Text,
+  View,
+  SafeAreaView,
+  Button,
+  StyleSheet,
+  TouchableOpacity
+} from "react-native";
 import { basicStyle } from "../style/styles";
 import { p001, color, fontsSize } from "../style/base";
+import { SwitchActions } from "react-navigation";
+
 export class Landing extends Component {
   static navigationOptions = {
     title: "Eager Hit The Frog"
@@ -14,7 +23,19 @@ export class Landing extends Component {
       >
         <View>
           <Text>Eager Hit That Frog</Text>
-          <Button style={styles.button}>Play the game</Button>
+          <TouchableOpacity
+            onPress={() => {
+              console.log("kepencet");
+              this.props.navigation.dispatch(SwitchActions.jumpTo("Game"));
+
+            }}
+          >
+            <Button
+              style={styles.button}
+              title="Play Game"
+              color={color.purple}
+            />
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     );

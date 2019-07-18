@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { basicStyle } from "../style/styles";
 import { p001, color, fontsSize } from "../style/base";
+import { SwitchActions } from "react-navigation";
 
 export class End extends Component {
   static navigationOptions = {
@@ -15,7 +16,17 @@ export class End extends Component {
       >
         <View>
           <Text>End of Game</Text>
-          <Button style={styles.button}>Play Again</Button>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.dispatch(SwitchActions.jumpTo("Landing"));
+            }}
+          >
+            <Button
+              style={styles.button}
+              title="Play Again"
+              color={color.primary}
+            />
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     );

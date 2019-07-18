@@ -85,15 +85,15 @@ export const colSize = {
 export const btn = {
   sm: {
     width: "33%",
-    height: auto
+    height: "auto"
   },
   md: {
     width: "66%",
-    height: auto
+    height: "auto"
   },
   lg: {
     width: "100%",
-    height: auto
+    height: "auto"
   }
 };
 
@@ -116,7 +116,7 @@ export const img = {
 };
 
 export const imgRes = {
-  square: { width: auto, height: auto, maxWidth: 256, height: 256 },
-  potrait: { width: auto, height: auto, maxWidth: 144, height: 256 },
-  landscape: { width: auto, height: auto, maxWidth: 256, height: 144 }
+  square: { width: "auto", height: "auto", maxWidth: 256, height: 256 },
+  potrait: { width: "auto", height: "auto", maxWidth: 144, height: 256 },
+  landscape: { width: "auto", height: "auto", maxWidth: 256, height: 144 }
 };
