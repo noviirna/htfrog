@@ -11,19 +11,40 @@ export class Game extends Component {
   };
 
   state = {
-    muncul: 0
+    muncul: 0,
+    pressed: 0,
+    penalty: 0,
+    score: 0
   };
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ muncul: Math.floor(Math.random() * 9) + 1 });
-    }, 1000);
-  }
-
   async componentDidUpdate() {
-    await setTimeout(() => {
-      this.setState({ muncul: Math.floor(Math.random() * 9) + 1 });
-    }, 1000);
+    if (this.state.muncul !== 0) {
+      if (this.state.penalty < 3 && this.state.score < 3) {
+        if (this.state.pressed === 0) {
+        } else {
+        }
+      } else {
+        if (this.state.penalty === 3) {
+          this.props.navigation.dispatch(
+            SwitchActions.jumpTo(
+              { routeName: "End" },
+              { message: "You lose, sorry!" }
+            )
+          );
+        } else if (this.state.score === 3) {
+          this.props.navigation.dispatch(
+            SwitchActions.jumpTo(
+              { routeName: "End" },
+              { message: "You win, congratulation!" }
+            )
+          );
+        }
+      }
+    } else {
+      await setTimeout(() => {
+        this.setState({ muncul: Math.floor(Math.random() * 9) + 1 });
+      }, 2000);
+    }
   }
 
   onGameEnd() {

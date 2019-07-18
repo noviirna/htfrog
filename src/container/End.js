@@ -16,6 +16,7 @@ export class End extends Component {
       >
         <View>
           <Text>End of Game</Text>
+          <Text>{this.props.navigation.getParam("message")}</Text>
           <TouchableOpacity
             onPress={() => {
               this.props.navigation.dispatch(
